@@ -14,9 +14,7 @@ router.get(
     session: false
   }),
   function (req, res) {
-    res.redirect(
-      `${process.env.FRONTEND_URL}/gallery.html`
-    )
+    res.redirect('/user')
   }
 )
 
@@ -29,9 +27,7 @@ router.get(
   '/github/callback',
   passport.authenticate('github', { failureRedirect: '/failed' }),
   function (req, res) {
-    res.redirect(
-      `${process.env.FRONTEND_URL}/successfulGithubAuth?token=${req.user.jwt}?isNew=${req.user.isNew}`
-    )
+    res.redirect('/user')
   }
 )
 
