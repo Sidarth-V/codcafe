@@ -14,15 +14,23 @@ passport.deserializeUser(function (user, done) {
   done(null, user)
 })
 
+const cookieExtractor = function(req) {
+  var token = null;
+  if (req && req.cookies)
+  {
+      token = req.cookies['token'];
+  }
+  return token;
+};
+
 passport.use(
   new JwtStrategy(
     {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: cookieExtractor,
       secretOrKey: process.env.TOKEN_SECRET
     },
     async function (jwtPayload, done) {
       try {
-        console.log(jwtPayload)
         const user = await User.findOne({ email: jwtPayload.email })
         return done(null, user)
       } catch (error) {
@@ -39,7 +47,8 @@ const checkIfUserExists = async (profile, cb) => {
   if (currentUser) {
     profile.jwt = jwt.sign(
       { email: profile._json.email },
-      process.env.TOKEN_SECRET
+      process.env.TOKEN_SECRET,
+      { expiresIn: '1h' }
     )
     profile.isNew = false
   } else {

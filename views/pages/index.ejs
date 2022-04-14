@@ -6,7 +6,25 @@
 
   <body>
     <div id="wrapper">
-      <%- include('../partials/header', {style: "header-light scroll-light"}); -%>
+        
+      <%- include('../partials/header', {style: " transparent header-light scroll-light", status: "login"}); -%>
+      
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Mail added to list
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- content begin -->
       <div class="no-bottom no-top" id="content">
         <div id="top"></div>
@@ -23,17 +41,18 @@
                   <div class="spacer-single"></div>
                   <h6 class="wow fadeInUp" data-wow-delay=".5s">
                     <span class="text-uppercase id-color-2"
-                      >Gigaland Market</span
+                      >Working Code</span
                     >
                   </h6>
                   <div class="spacer-10"></div>
                   <h1 class="wow fadeInUp" data-wow-delay=".75s">
-                    Create, sell or collect digital items.
+                    Develop. Hire.
                   </h1>
                   <p class="wow fadeInUp lead" data-wow-delay="1s">
-                    Unit of data stored on a digital ledger, called a
-                    blockchain, that certifies a digital asset to be unique and
-                    therefore not interchangeable
+                    Look for projects, or get someone to help with yours.
+                    <br><br>
+                    WorkingCode is a platform that provides access to real-world experience and allows developers to collaborate and showcase their projects. 
+
                   </p>
                   <div class="spacer-10"></div>
                   <a
@@ -62,19 +81,19 @@
             {
                 data: [
                     { 
-                        heading: "heading 1",
-                        description: "lorem ipsum sucks and so do you. yes you the one reading this",
-                        imgClass: "icon_wallet"
+                        heading: "set up your profile",
+                        description: "Connect with people with similar interests and find projects that you want to contribute to",
+                        imgClass: "icon_id-2_alt"
                     },
                     { 
-                        heading: "heading 2",
-                        description: "lorem ipsum sucks and so do you. yes you the one reading this",
-                        imgClass: "icon_cloud-upload_alt"
+                        heading: "Collaborate with others",
+                        description: "Need people to help you with your project? Hire and collaborate with people who have the expertise.",
+                        imgClass: "icon_group"
                     },
                     { 
-                        heading: "heading 3",
-                        description: "lorem ipsum sucks and so do you. yes you the one reading this",
-                        imgClass: "icon_tags_alt"
+                        heading: "Open Source",
+                        description: "WorkingCode is an open source project. Feel free to give us feedback and add features you would like to see!",
+                        imgClass: "icon_lightbulb_alt"
                     }
                 ]
             }
