@@ -15,6 +15,10 @@ const createLocalUserPage = async (req, res) => {
 }
 
 const createLocalUserCallback = async (req, res) => {
+  let isDev = false 
+  let isHire = false
+  if (req.body.role.includes("dev")) isDev = true
+  if (req.body.role.includes("hire")) isHire = true
   let user = new Users ({
     name: req.body.fullName,
     email: req.body.email,
