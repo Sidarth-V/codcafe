@@ -39,8 +39,12 @@
                   id="form-create-item"
                   class="form-border"
                   method="post"
-                  action="/addUser"
                   enctype="multipart/form-data"
+                  <% if (user.name != undefined) { %>
+                    action="/updateUser"
+                <%} else { %>
+                    action="/addUser"
+                <% } %>
                 >
                   <div class="field-set">
                     <h5>Upload user image</h5>
@@ -55,6 +59,7 @@
                         class="btn-main"
                         value="Browse"
                         required
+                        
                       />
                       <input type="file" id="upload_file" name="image" />
                     </div>

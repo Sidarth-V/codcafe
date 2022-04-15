@@ -12,6 +12,7 @@ router.post('/localLogin',
       process.env.TOKEN_SECRET
     )
     res.cookie('token', token)
+    res.cookie('first', true)
     res.redirect('/profile');
   }
 );
@@ -23,12 +24,18 @@ router.get(
     session: false
   }),
   async function (req, res) {
-    res.cookie('token', req.user.jwt)
     let user = await Users.findOne({ email: req.user._json.email })
-    if(user.done == true){
-      res.redirect('/profile')
+    res.cookie('token', req.user.jwt)
+    res.cookie('first', true)
+    if(user){
+      if(user.done){
+        res.redirect('/profile')
+      }
+      else {
+        res.redirect('/updateUser')
+      }
     } else {
-      res.redirect('/createUser')
+      res.redirect('/updateUser')
     }
   }
 )
@@ -47,12 +54,18 @@ router.get(
   '/github/callback',
   passport.authenticate('github', { failureRedirect: '/failed' }),
   async function (req, res) {
-    res.cookie('token', req.user.jwt)
     let user = await Users.findOne({ email: req.user._json.email })
-    if(user.done == true){
-      res.redirect('/profile')
+    res.cookie('token', req.user.jwt)
+    res.cookie('first', true)
+    if(user){
+      if(user.done){
+        res.redirect('/profile')
+      }
+      else {
+        res.redirect('/updateUser')
+      }
     } else {
-      res.redirect('/createUser')
+      res.redirect('/updateUser')
     }
   }
 )

@@ -70,8 +70,12 @@ app.get('/logout', function(req, res){
 
 
 // User Routes
-app.get('/createUser', userController.createUser)
-app.post('/addUser', upload.single('image'), userController.addUser)
+app.get('/createUser', userController.createLocalUserPage)
+app.post('/addUser', upload.single('image'), userController.createLocalUserCallback)
+
+app.get('/updateUser',  authorised, userController.createAuthUserPage)
+app.post('/updateUser',  authorised, upload.single('image'), userController.createAuthUserCallback)
+
 app.get('/profile', authorised, userController.profile)
 app.get('/social', authorised, exploreUsersController.exploreUsers)
 

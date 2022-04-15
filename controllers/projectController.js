@@ -52,12 +52,17 @@ const contribute = async (req, res) => {
 }
 
 const topViews = async ( req, res) => {
-  const projects = await Project.find({ inProgress: true }).sort({ viewCount: 1}).limit(5)
+  const token = req.cookies.token
+  let status = "logout"
+  if (token === undefined) {
+      status = "login"
+  }
+  const projects = await Project.find({ inProgress: true }).sort({ viewCount: -1}).limit(5)
   for (let project of projects) {
     project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
   }
-  const users = await Users.find().sort({viewCount: 1}).limit(8)
-  res.render('pages/index', {projects, users})
+  const users = await Users.find().sort({viewCount: -1}).limit(8)
+  res.render('pages/index', {projects, users, status})
 }
 
 module.exports = { createProject, viewProject, contribute, topViews}

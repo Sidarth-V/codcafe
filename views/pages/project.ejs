@@ -44,7 +44,7 @@
                   <h6>Creator</h6>
                   <div class="item_author">
                     <div class="author_list_pp">
-                      <a href="author.html">
+                      <a href="/profile?id=<%= project.postedBy %>">
                         <img
                           class="lazy"
                           src="data:image/<%=authorImg.userImg.contentType%>;base64,<%=authorImg.userImg.data.toString('base64')%>"
@@ -54,7 +54,7 @@
                       </a>
                     </div>
                     <div class="author_list_info">
-                      <a href="author.html"><%= project.posterName %> </a>
+                      <a href="/profile?id=<%= project.postedBy %>"><%= project.posterName %> </a>
                     </div>
                   </div>
 
