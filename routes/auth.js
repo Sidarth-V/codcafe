@@ -46,8 +46,14 @@ router.get(
 router.get(
   '/github/callback',
   passport.authenticate('github', { failureRedirect: '/failed' }),
-  function (req, res) {
-    res.redirect('/profile')
+  async function (req, res) {
+    res.cookie('token', req.user.jwt)
+    let user = await Users.findOne({ email: req.user._json.email })
+    if(user.done == true){
+      res.redirect('/profile')
+    } else {
+      res.redirect('/createUser')
+    }
   }
 )
 
