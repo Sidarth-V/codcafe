@@ -77,14 +77,32 @@ const profile = async (req, res) => {
   if(req.query.id) {
     user = await Users.findOneAndUpdate({_id: req.query.id }, {$inc : {'viewCount' : 1}})
     createdBy = await Project.find({ postedBy: req.query.id})
+    for (let project of createdBy) {
+      project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+    }
     inProgress = await Project.find({contributorIds: user._id, inProgress: true})
+    for (let project of inProgress) {
+      project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+    }
     finished = await Project.find({ contributorIds: user._id, finished: true})
+    for (let project of finished) {
+      project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+    }
   }
   else {
     user = await Users.findOne({ email: req.user.email })
     createdBy = await Project.find({ postedBy: user._id })
+    for (let project of createdBy) {
+      project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+    }
     inProgress = await Project.find({contributorIds: user._id, inProgress: true})
+    for (let project of inProgress) {
+      project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+    }
     finished = await Project.find({ contributorIds: user._id, finished: true})
+    for (let project of finished) {
+      project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+    }
   }
   res.render('pages/profile', { user, createdBy, inProgress, finished, popup })
 }

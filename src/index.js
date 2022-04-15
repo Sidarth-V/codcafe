@@ -34,6 +34,7 @@ const userController = require('../controllers/userController')
 const exploreProjectsController = require('../controllers/exploreProjectsController')
 const projectController = require('../controllers/projectController')
 const exploreUsersController = require('../controllers/exploreUsersController')
+const newsController = require('../controllers/newsController')
 
 // set the view engine to ejs
 app.set('view engine', 'ejs')
@@ -93,9 +94,7 @@ app.get('/contact', authorised, (req, res) => {
   res.render('pages/contact')
 })
 
-app.get('/news', authorised, (req, res) => {
-  res.render('pages/news')
-})
+app.get('/news', authorised, newsController.getNews)
 
 app.get('/faq', authorised, (req, res) => {
   res.render('pages/faq')
