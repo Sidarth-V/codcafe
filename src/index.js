@@ -56,9 +56,7 @@ mongoose
   })
 
 // Index Page
-app.get('/', (req, res) => {
-  res.render('pages/index')
-})
+app.get('/',projectController.topViews)
 
 // Authentication
 app.use('/auth', authRoutes)

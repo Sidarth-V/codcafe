@@ -3,6 +3,7 @@ const Project = require('../models/projectModel')
 const fs = require('fs');
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
+const path = require('path')
 
 const createProject = async(req, res) => {
   let newProject = new Project(
@@ -30,15 +31,17 @@ const viewProject = async (req, res) => {
   const user = await Users.findOne({ email: req.user.email })
   const project = await Project.findOneAndUpdate({_id: req.query.id }, {$inc : {'viewCount' : 1}})
 
+  const authorImg = await Users.findOne({ _id: project.postedBy }, { userImg: 1})
+
   if(!project.postedBy.equals(user._id)){
     if(!project.contributorIds.includes(user._id)) {
-      res.render('pages/project', {project, contrib: true})
+      res.render('pages/project', {project, contrib: true, authorImg})
     }
     else {
-      res.render('pages/project', {project, contrib: false})
+      res.render('pages/project', {project, contrib: false, authorImg})
     }
   } else {
-    res.render('pages/project', {project, contrib: false})
+    res.render('pages/project', {project, contrib: false, authorImg})
   }
 }
 
@@ -48,4 +51,13 @@ const contribute = async (req, res) => {
   res.redirect('/explore')
 }
 
-module.exports = { createProject, viewProject, contribute}
+const topViews = async ( req, res) => {
+  const projects = await Project.find({ inProgress: true }).sort({ viewCount: 1}).limit(5)
+  for (let project of projects) {
+    project.authorImg = await Users.findOne({ _id: project.postedBy}, { userImg: 1})
+  }
+  const users = await Users.find().sort({viewCount: 1}).limit(8)
+  res.render('pages/index', {projects, users})
+}
+
+module.exports = { createProject, viewProject, contribute, topViews}
