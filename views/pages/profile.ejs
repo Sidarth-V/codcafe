@@ -28,16 +28,16 @@
                   <div class="de-flex-col">
                     <div class="profile_avatar">
                       <img
-                        src="images/author_single/author_thumbnail.jpg"
+                        src="data:image/<%=user.userImg.contentType%>;base64,<%=user.userImg.data.toString('base64')%>"
                         alt=""
                       />
                       <i class="fa fa-check"></i>
                       <div class="profile_name">
                         <h4>
-                            <%= name %>
-                          <span class="profile_username"><%= skills %></span>
+                            <%= user.name %>
+                          <span class="profile_username"><%= user.userName %></span>
                           <span id="wallet" class="profile_wallet"
-                            ><%= email %></span
+                            ><%= user.email %></span
                           >
                           <button id="btn_copy" title="Copy Text">Copy</button>
                         </h4>
@@ -46,10 +46,7 @@
                   </div>
                   <div class="profile_follow de-flex">
                     <div class="de-flex-col">
-                      <div class="profile_follower">500 followers</div>
-                    </div>
-                    <div class="de-flex-col">
-                      <a href="#" class="btn-main">Follow</a>
+                      <div class="profile_follower"><%= user.viewCount %></div>
                     </div>
                   </div>
                 </div>
@@ -60,43 +57,14 @@
                   <ul class="de_nav">
                     <li class="active"><span>In Progress</span></li>
                     <li><span>Finished</span></li>
-                    <li><span>Liked</span></li>
+                    <li><span>Created</span></li>
                   </ul>
 
                   <div class="de_tab_content">
                     <div class="tab-1">
                       <div class="row">
                         <%- include('../partials/projList', {
-                            data: [
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    cd_year: 2022,
-                                    cd_month: 4,
-                                    cd_day: 16,
-                                    cd_hour: 10,
-                                    style: "",
-                                    techStack: "Django, Flask"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "NodeJS, Flask"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "Django, React"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "NodeJS, React"
-                                },
-                            ]
+                            data: inProgress
                         }); %>
                         
                       </div>
@@ -105,36 +73,7 @@
                     <div class="tab-2">
                       <div class="row">
                         <%- include('../partials/projList', {
-                            data: [
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    cd_year: 2022,
-                                    cd_month: 4,
-                                    cd_day: 16,
-                                    cd_hour: 10,
-                                    style: "",
-                                    techStack: "Django, Flask"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "NodeJS, Flask"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "Django, React"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "NodeJS, React"
-                                },
-                            ]
+                            data: finished
                         }); %>
                         
                       </div>
@@ -143,36 +82,7 @@
                     <div class="tab-3">
                       <div class="row">
                         <%- include('../partials/projList', {
-                            data: [
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    cd_year: 2022,
-                                    cd_month: 4,
-                                    cd_day: 16,
-                                    cd_hour: 10,
-                                    style: "",
-                                    techStack: "Django, Flask"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "NodeJS, Flask"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "Django, React"
-                                },
-                                {
-                                    projectImage : "images/author_single/porto-1.jpg",
-                                    projectName: "Pinky Ocean",
-                                    style: "d-none",
-                                    techStack: "NodeJS, React"
-                                },
-                            ]
+                            data: createdBy
                         }); %>
                       </div>
                     </div>

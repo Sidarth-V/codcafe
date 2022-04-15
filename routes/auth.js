@@ -1,26 +1,20 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
+const Users = require('../models/profileModel')
+const jwt = require('jsonwebtoken')
 
-let dev = false
-let hire = false
-
-const isDev = (req, res, next) => {
-  dev = true
-  fire = false
-  next()
-}
-
-const isHire = (req, res, next) => {
-  dev = false
-  hire = true
-  next()
-}
-
-router.get(
-  '/dev/google', isDev,
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-)
+router.post('/localLogin', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+    token = jwt.sign(
+      { email: req.user.email },
+      process.env.TOKEN_SECRET
+    )
+    res.cookie('token', token)
+    res.redirect('/profile');
+  }
+);
 
 router.get(
   '/google/callback',
@@ -28,24 +22,24 @@ router.get(
     failureRedirect: '/failed',
     session: false
   }),
-  function (req, res) {
+  async function (req, res) {
     res.cookie('token', req.user.jwt)
-    if(dev) {
+    let user = await Users.findOne({ email: req.user._json.email })
+    if(user.done == true){
       res.redirect('/profile')
-    } else if(hire) {
-      res.redirect('/collection')
+    } else {
+      res.redirect('/createUser')
     }
-    
   }
 )
 
 router.get(
-  '/hire/google', isHire, 
+  '/google', 
   passport.authenticate('google', { scope: ['profile', 'email'] })
 )
 
 router.get(
-  '/dev/github',
+  '/github',
   passport.authenticate('github', { scope: ['user:email'] })
 )
 
@@ -55,11 +49,6 @@ router.get(
   function (req, res) {
     res.redirect('/user')
   }
-)
-
-router.get(
-  '/hire/github',
-  passport.authenticate('github', { scope: ['user:email'] })
 )
 
 module.exports = router

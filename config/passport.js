@@ -5,6 +5,8 @@ const ExtractJwt = require('passport-jwt').ExtractJwt
 const passport = require('passport')
 const User = require('../models/profileModel')
 const jwt = require('jsonwebtoken')
+const LocalStrategy = require('passport-local');
+
 
 passport.serializeUser(function (user, done) {
   done(null, user)
@@ -74,7 +76,6 @@ passport.use(
       callbackURL: '/auth/google/callback'
     },
     function (accessToken, refreshToken, profile, cb) {
-      console.log(profile)
       checkIfUserExists(profile, cb)
     }
   )
@@ -85,10 +86,33 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: '/auth/github/callback'
+      callbackURL: 'https://codcafe.herokuapp.com/auth/github/callback'
     },
     function (accessToken, refreshToken, profile, done) {
       checkIfUserExists(profile, done)
     }
   )
 )
+
+passport.use(
+  new LocalStrategy({
+    usernameField: 'email',
+    session: false
+  },
+  async function(username, password, done) {
+    User.findOne({ userName: username }, function (err, user) {
+      if (err) { 
+        return done(err)
+      }
+      if (!user) { 
+        console.log("User not found")
+        return done(null, false)
+      }
+      if (user.password != password) { 
+        console.log("Wrong Password")
+        return done(null, false); 
+      }
+      return done(null, user);
+    });
+  }
+));

@@ -6,6 +6,32 @@ const profileSchema = mongoose.Schema({
   },
   email: {
     type: String
+  },
+  userName: {
+    type: String
+  },
+  isDev: {
+    type: Boolean
+  },
+  isHire: {
+    type: Boolean
+  },
+  skills: [{
+    type: String
+  }],
+  done: {
+    type: Boolean
+  },
+  userImg: {
+    data: Buffer,
+    contentType: String
+  },
+  viewCount: {
+    type: Number,
+    default: 0
+  },
+  password: {
+    type: String
   }
 })
 

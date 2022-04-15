@@ -40,83 +40,39 @@
                     data-wow-delay=".5s"
                   >
                     <div class="box-rounded padding40" data-bgcolor="#ffffff">
-                        <div class="tab-default">
-                            <nav>
-                              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Develop</button>
-                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Hire</button>
-                              </div>
-                            </nav>
+                        
                             
                             <div class="tab-content" id="nav-tabContent">
-                              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <form name="contactForm" id='contact_form' class="form-border" method="post" action='blank.php'>
+                                <h3 class="mb10">Sign In</h3>
+                                <p>Login using an existing account or create a new account <a href="/createUser">here<span></span></a>.</p>
+                                <form action='/auth/localLogin' name="contactForm" class="form-border" method="post" >
 
                                     <div class="field-set">
                                         <input type='text' name='email' id='email' class="form-control" placeholder="username">
                                     </div>
                                     
-                                     <div class="field-set">
+                                    <div class="field-set">
                                         <input type='password' name='password' id='password' class="form-control" placeholder="password">
                                     </div>
                                     
                                     <div class="field-set">
-                                        <input type='submit' id='send_message' value='Submit' class="btn btn-main btn-fullwidth color-2">
+                                        <input type='submit' value='Login' class="btn btn-main btn-fullwidth color-2">
                                     </div>
                                     
                                     <div class="clearfix"></div>
                                     
                                     <div class="spacer-single"></div>
-
-                                    <!-- social icons -->
+                                </form>
                                 <ul class="list s3">
                                     <li>Login with:</li>
-                                    <li><a href="/auth/dev/github">Github</a></li>
+                                    <li><a href="/auth/github">Github</a></li>
                                     <li>
-                                    <a href="/auth/dev/google"
-                                        >Google</a
-                                    >
+                                    <a href="/auth/google">Google</a>
                                     </li>
                                 </ul>
-                                <!-- social icons close -->
-                                </form>
-                              </div>
-                              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <form name="contactForm" id='contact_form' class="form-border" method="post" action='blank.php'>
-
-                                    <div class="field-set">
-                                        <input type='text' name='email' id='email' class="form-control" placeholder="username">
-                                    </div>
-                                    
-                                     <div class="field-set">
-                                        <input type='password' name='password' id='password' class="form-control" placeholder="password">
-                                    </div>
-                                    
-                                    <div class="field-set">
-                                        <input type='submit' id='send_message' value='Submit' class="btn btn-main btn-fullwidth color-2">
-                                    </div>
-                                    
-                                    <div class="clearfix"></div>
-                                    
-                                    <div class="spacer-single"></div>
-
-                                    <!-- social icons -->
-                                <ul class="list s3">
-                                    <li>Login with:</li>
-                                    <li><a href="/auth/hire/github">Github</a></li>
-                                    <li>
-                                    <a href="/auth/hire/google">Google</a>
-                                    </li>
-                                </ul>
-                                <!-- social icons close -->
-                                </form>
                               </div>
                             </div>
-                            
                         </div>
-
-                        
-                      </form>
                     </div>
                   </div>
                 </div>

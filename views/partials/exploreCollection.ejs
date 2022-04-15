@@ -2,8 +2,8 @@
 <div class="d-item col-lg-4 col-md-6 col-sm-6 col-xs-12">
   <div class="nft__item">
     <div class="author_list_pp">
-      <a href="/author?name=<%- item.id %> ">
-        <img class="lazy" src="images/author/author-10.jpg" alt="" />
+      <a href="/profile?id=<%- item.postedBy %> ">
+        <img class="lazy" src="data:image/<%=item.authorImg.userImg.contentType%>;base64,<%=item.authorImg.userImg.data.toString('base64')%>" alt="" />
         <i class="fa fa-check"></i>
       </a>
     </div>
