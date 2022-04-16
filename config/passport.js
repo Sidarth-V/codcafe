@@ -86,7 +86,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: 'https://codcafe.herokuapp.com/auth/github/callback'
+      callbackURL: 'http://codcafe.azurewebsites.net/auth/github/callback'
     },
     function (accessToken, refreshToken, profile, done) {
       checkIfUserExists(profile, done)
