@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <%- include('../partials/jsFiles'); %>
+    <div id="wrapper">
+      <%- include('../partials/header', {style: "header-light scroll-light", status: "logout"});-%>
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+
+        <!-- section begin -->
+        <section
+          id="profile_banner"
+          aria-label="section"
+          class="text-light"
+          data-bgimage="url(images/author_single/author_banner.jpg) top"
+        ></section>
+        <!-- section close -->
+        <!-- Modal -->
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <i class=" fa fa-lg text-success fa-check-circle"></i>
+                    Woohoo, you've been logged in successfully
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        <script type="text/javascript">
+            var show = "<%= popup %>"
+            if( show == "true" )
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {})
+            myModal.toggle()
+        </script>
+        
+        <section aria-label="section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d_profile de-flex">
+                  <div class="de-flex-col">
+                    <div class="profile_avatar">
+                      <img
+                        src="data:image/<%=user.userImg.contentType%>;base64,<%=user.userImg.data.toString('base64')%>"
+                        alt=""
+                      />
+                      <i class="fa fa-check"></i>
+                      <div class="profile_name">
+                        <h4>
+                            <%= user.name %>
+                          <span class="profile_username"><%= user.userName %></span>
+                          <span id="wallet" class="profile_wallet"
+                            ><%= user.email %></span
+                          >
+                          <button id="btn_copy" title="Copy Text">Copy</button>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="profile_follow de-flex">
+                    <div class="de-flex-col">
+                      <div class="profile_follower"><%= user.viewCount %></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="de_tab tab_simple">
+                  <ul class="de_nav">
+                    <li class="active"><span>In Progress</span></li>
+                    <li><span>Finished</span></li>
+                    <li><span>Created</span></li>
+                  </ul>
+
+                  <div class="de_tab_content">
+                    <div class="tab-1">
+                      <div class="row">
+                        <%- include('../partials/projList', {
+                            data: inProgress
+                        }); %>
+                        
+                      </div>
+                    </div>
+
+                    <div class="tab-2">
+                      <div class="row">
+                        <%- include('../partials/projList', {
+                            data: finished
+                        }); %>
+                        
+                      </div>
+                    </div>
+
+                    <div class="tab-3">
+                      <div class="row">
+                        <%- include('../partials/projList', {
+                            data: createdBy
+                        }); %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content close -->
+      <%- include('../partials/footer'); %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <%- include('../partials/header', {style: "header-light scroll-light", status:
+      "logout"}); -%>
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+
+        <section aria-label="section" class="mt90 sm-mt-0">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <img
+                  src="data:image/<%=project.projectImg.contentType%>;base64,<%=project.projectImg.data.toString('base64')%>"
+                  class="img-fluid img-rounded mb-sm-30"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-6">
+                <div class="item_info">
+                  
+                  <h2><%= project.name %></h2>
+                  
+                  <div class="item_info_counts">
+                    <% project.techUsed.forEach(function(item) { %>
+                    <div class="item_info_type">
+                        <%= item %>
+                    </div>
+                    <% }); %>
+                    <div class="item_info_views">
+                      <i class="fa fa-eye"></i><%= project.viewCount %>
+                    </div>
+                  </div>
+                  <p>
+                    <%= project.desc %> 
+                  </p>
+
+                  <h6>Creator</h6>
+                  <div class="item_author">
+                    <div class="author_list_pp">
+                      <a href="/profile?id=<%= project.postedBy %>">
+                        <img
+                          class="lazy"
+                          src="data:image/<%=authorImg.userImg.contentType%>;base64,<%=authorImg.userImg.data.toString('base64')%>"
+                          alt=""
+                        />
+                        <i class="fa fa-check"></i>
+                      </a>
+                    </div>
+                    <div class="author_list_info">
+                      <a href="/profile?id=<%= project.postedBy %>"><%= project.posterName %> </a>
+                    </div>
+                  </div>
+
+                  <div class="spacer-40"></div>
+
+                  <div>
+                      <a
+                        type="button"
+                        <% if (!contrib) { %>
+                            class = "btn btn-secondary"
+                            disabled
+                        <%} else { %>
+                            class = "btn btn-main"
+                            href="/contribute?id=<%= project._id %>"
+                        <% } %>
+                        
+                      >
+                        Contribute
+                        </a>
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content close -->
+      <a href="#" id="back-to-top"></a>
+      <%- include('../partials/footer'); %>
+    </div>
+    <%- include('../partials/jsFiles'); %>
+  </body>
+</html>

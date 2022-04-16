@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <%- include('../partials/header', {style: "transparent", status: status}); -%>
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+
+        <!-- section begin -->
+        <section
+          id="subheader"
+          class="text-light"
+          data-bgimage="url(images/background/subheader.jpg) top"
+        >
+          <div class="center-y relative text-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h1>Create User</h1>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- section close -->
+
+        <!-- section begin -->
+        <section aria-label="section">
+          <div class="container">
+            <div class="row wow fadeIn">
+              <div class="col-lg-7 offset-lg-1">
+                <form
+                  id="form-create-item"
+                  class="form-border"
+                  method="post"
+                  enctype="multipart/form-data"
+                  <% if (user.name != undefined) { %>
+                    action="/updateUser"
+                <%} else { %>
+                    action="/addUser"
+                <% } %>
+                >
+                  <div class="field-set">
+                    <h5>Upload user image</h5>
+
+                    <div class="d-create-file">
+                      <p id="file_name">
+                        PNG, JPG, GIF, WEBP or MP4. Max 200mb.
+                      </p>
+                      <input
+                        type="button"
+                        id="get_file"
+                        class="btn-main"
+                        value="Browse"
+                        required
+                        
+                      />
+                      <input type="file" id="upload_file" name="image" />
+                    </div>
+
+                    <div class="spacer-single"></div>
+
+                    <h5>Name</h5>
+                    <input
+                    type="search"
+                    name="fullName"
+                    class="form-control"
+                    <% if (user.name != undefined) { %>
+                        value = "<%- user.name %>"
+                        disabled
+                    <%} else { %>
+                        placeholder="Enter you full name eg(John Doe)"
+                    <% } %>
+                    />
+                    <div class="spacer-20"></div>
+
+                    <h5>Username</h5>
+                    <input
+                      type="text"
+                      name="userName"
+                      class="form-control"
+                      placeholder="e.g. johndoe001"
+                      required
+                    />
+
+                    <% if (password) { %>
+                        <div class="spacer-10"></div>
+                        <h5>Password</h5>
+                    <% } %>
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      <% if (password) { %>
+                        placeholder="Enter your password"
+                        required
+                    <%} else { %>
+                        hidden
+                    <% } %>
+                    />
+
+
+                    <h5>Email</h5>
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control"
+                      <% if (user.email != null) { %>
+                        value = "<%- user.email %>"
+                        disabled
+                      <%} else { %>
+                        placeholder="e.g. johndoe@example.com"
+                      <% } %>
+                    />
+
+                    <div class="spacer-20"></div>
+
+                    <div class="item_filter_group">
+                        <h4>Role</h4>
+                        <div class="de_form">
+                          <div class="de_checkbox">
+                            <input
+                              id="check_cat_3"
+                              name="role"
+                              type="checkbox"
+                              value="dev"
+                            />
+                            <label for="check_cat_3">Developer</label>
+                          </div>
+  
+                          <div class="de_checkbox">
+                            <input
+                              id="check_cat_4"
+                              name="role"
+                              type="checkbox"
+                              value="hire"
+                            />
+                            <label for="check_cat_4">Recruiter</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="item_filter_group">
+                      <h4>Skills</h4>
+                      <div class="de_form">
+                        <div class="de_checkbox">
+                          <input
+                            id="check_cat_5"
+                            name="skills"
+                            type="checkbox"
+                            value="App Developer"
+                          />
+                          <label for="check_cat_5">App Developer</label>
+                        </div>
+
+                        <div class="de_checkbox">
+                          <input
+                            id="check_cat_6"
+                            name="skills"
+                            type="checkbox"
+                            value="Web Developer"
+                          />
+                          <label for="check_cat_6">Web Developer</label>
+                        </div>
+
+                        <div class="de_checkbox">
+                          <input
+                            id="check_cat_7"
+                            name="skills"
+                            type="checkbox"
+                            value="Compiler Design"
+                          />
+                          <label for="check_cat_7">Compiler Design</label>
+                        </div>
+
+                        <div class="de_checkbox">
+                          <input
+                            id="check_cat_8"
+                            name="skills"
+                            type="checkbox"
+                            value="Cybersecurity"
+                          />
+                          <label for="check_cat_8">Cybersecurity</label>
+                        </div>
+
+                        <div class="de_checkbox">
+                          <input
+                            id="check_cat_9"
+                            name="skills"
+                            type="checkbox"
+                            value="Competitive Programmer"
+                          />
+                          <label for="check_cat_9">Competitive Programmer</label>
+                        </div>
+
+                        <div class="de_checkbox">
+                          <input
+                            id="check_cat_10"
+                            name="skills"
+                            type="checkbox"
+                            value="Machine Learning"
+                          />
+                          <label for="check_cat_10">Machine Learning</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <input
+                      type="submit"
+                      id="submit"
+                      class="btn-main"
+                      value="Create User"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content close -->
+
+      <a href="#" id="back-to-top"></a>
+
+      <%- include('../partials/footer'); %>
+    </div>
+    <%- include('../partials/jsFiles'); %>
+  </body>
+</html>

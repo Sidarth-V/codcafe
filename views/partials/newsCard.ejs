@@ -1,0 +1,23 @@
+<% data.forEach(function(item) { %>
+<div class="col-lg-4 col-md-6 mb30">
+    <div class="bloglist item">
+      <div class="post-content">
+        <div class="post-image">
+          <img alt="" src="<%= item.urlToImage %>" class="lazy" />
+        </div>
+        <div class="post-text">
+          <span class="p-date"><%= item.publishedAt %></span>
+          <h4>
+            <a href="<%= item.url %>"
+              ><%= item.title %><span></span
+            ></a>
+          </h4>
+          <p>
+            <%= item.description %>
+          </p>
+          <a class="btn-main" href="<%= item.url %>">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }); %>

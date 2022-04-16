@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <%- include('../partials/head'); %>
+   
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <%- include('../partials/header', {style: "header-light scroll-light", status: "logout"}); %>
+        <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="profile_banner" aria-label="section" class="text-light" data-bgimage="url(images/background/4.jpg) top">
+                    
+            </section>
+            <!-- section close -->
+            
+
+            <section aria-label="section" class="d_coll no-top">
+                <div class="container">
+					<div class="row">
+					    <div class="col-md-12">
+                           <div class="d_profile">
+                                    <div class="profile_avatar">
+                                        <div class="d_profile_img">
+                                            <img src="images/author/author-1.jpg" alt="">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        
+                                        <div class="profile_name">
+                                            <h4>
+                                                <%= name %>                                                
+                                                <div class="clearfix"></div>
+                                                <span id="wallet" class="profile_wallet"><%= email %></span>
+                                                <button id="btn_copy" title="Copy Text">Copy</button>
+                                            </h4>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="de_tab tab_simple">
+    
+                                <ul class="de_nav">
+                                    <li class="active"><span>On Sale</span></li>
+                                    <li><span>Owned</span></li>
+                                </ul>
+                                
+                                <div class="de_tab_content">
+                                    
+                                    <div class="tab-1">
+                                        <div class="row">
+                                            <%- include('../partials/projList', {
+                                                data: [
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        cd_year: 2022,
+                                                        cd_month: 4,
+                                                        cd_day: 16,
+                                                        cd_hour: 10,
+                                                        style: "",
+                                                        techStack: "Django, Flask"
+                                                    },
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        style: "d-none",
+                                                        techStack: "NodeJS, Flask"
+                                                    },
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        style: "d-none",
+                                                        techStack: "Django, React"
+                                                    },
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        style: "d-none",
+                                                        techStack: "NodeJS, React"
+                                                    },
+                                                ]
+                                            }); %>
+                                            </div>
+                                    </div>
+                                    
+                                    <div class="tab-2">
+                                        <div class="row">
+                                            <%- include('../partials/projList', {
+                                                data: [
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        cd_year: 2022,
+                                                        cd_month: 4,
+                                                        cd_day: 16,
+                                                        cd_hour: 10,
+                                                        style: "",
+                                                        techStack: "Django, Flask"
+                                                    },
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        style: "d-none",
+                                                        techStack: "NodeJS, Flask"
+                                                    },
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        style: "d-none",
+                                                        techStack: "Django, React"
+                                                    },
+                                                    {
+                                                        projectImage : "images/author_single/porto-1.jpg",
+                                                        projectName: "Pinky Ocean",
+                                                        style: "d-none",
+                                                        techStack: "NodeJS, React"
+                                                    },
+                                                ]
+                                            }); %>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </section>
+			
+			
+        </div>
+        <!-- content close -->
+        <%- include('../partials/footer'); %>
+        <a href="#" id="back-to-top"></a>
+    </div>
+    <%- include('../partials/jsFiles'); %>
+</body>
+</html>

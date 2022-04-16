@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <%- include('../partials/header', {style: "", status: "logout"}); -%>
+      <!-- content begin -->
+      <div class="no-bottom" id="content">
+        <div id="top"></div>
+
+        <!-- section begin -->
+        <section aria-label="section">
+          <div class="container">
+            <div class="row wow fadeIn">
+              <aside class="col-md-3">
+                <div class="item_filter_group">
+                    <div class="text-center">
+                        <a href="" class="btn-main" id="submit">Filter</a>
+                    </div>
+                </div>
+                <div class="item_filter_group">
+                  <h4>Technologies Used</h4>
+                  <div class="de_form">
+                      
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_1"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="javascript"
+                      />
+                      <label for="check_cat_1">JavaScript</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_2"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="Java"
+                      />
+                      <label for="check_cat_2">Java</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_3"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="cpp"
+                      />
+                      <label for="check_cat_3">C/C++</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_4"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="nodejs"
+                      />
+                      <label for="check_cat_4">NodeJs</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_5"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="react"
+                      />
+                      <label for="check_cat_5">React</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_6"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="kotlin"
+                      />
+                      <label for="check_cat_6">Kotlin</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_7"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="rust"
+                      />
+                      <label for="check_cat_7">Rust</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_cat_8"
+                        name="check_cat_1"
+                        type="checkbox"
+                        value="angular"
+                      />
+                      <label for="check_cat_8">Angular</label>
+                    </div>
+                    <script>
+                      var checkboxes = document.querySelectorAll(
+                        'input[type=checkbox][name=check_cat_1]'
+                      )
+                      let enabledSettings = []
+
+                      checkboxes.forEach(function (checkbox) {
+                        checkbox.addEventListener('change', function () {
+                          enabledSettings = Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
+                            .filter((i) => i.checked) // Use Array.filter to remove unchecked checkboxes.
+                            .map((i) => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
+                          
+                            var arrStr = encodeURIComponent(JSON.stringify(enabledSettings));
+                            $('#submit').attr({ href: '/explore?array=' + arrStr });
+                        })
+                      })
+                    </script>
+                    
+                  </div>
+                </div>
+
+                <div class="item_filter_group">
+                  <h4>Status</h4>
+                  <div class="de_form">
+                    <div class="de_checkbox">
+                      <input
+                        id="check_stat_1"
+                        name="check_stat_1"
+                        type="checkbox"
+                        value="check_stat_1"
+                      />
+                      <label for="check_stat_1">Yet to start</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_stat_2"
+                        name="check_stat_2"
+                        type="checkbox"
+                        value="check_stat_2"
+                      />
+                      <label for="check_stat_2">In Progress</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_stat_3"
+                        name="check_stat_3"
+                        type="checkbox"
+                        value="check_stat_3"
+                      />
+                      <label for="check_stat_3">Completed</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="item_filter_group">
+                  <h4>Posted By</h4>
+                  <div class="de_form">
+                    <div class="de_checkbox">
+                      <input
+                        id="check_coll_1"
+                        name="check_coll_1"
+                        type="checkbox"
+                        value="check_coll_1"
+                      />
+                      <label for="check_coll_1">Microsoft</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_coll_2"
+                        name="check_coll_2"
+                        type="checkbox"
+                        value="check_coll_2"
+                      />
+                      <label for="check_coll_2">GitHub</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_coll_3"
+                        name="check_coll_3"
+                        type="checkbox"
+                        value="check_coll_3"
+                      />
+                      <label for="check_coll_3">Amazon</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_coll_4"
+                        name="check_coll_4"
+                        type="checkbox"
+                        value="check_coll_4"
+                      />
+                      <label for="check_coll_4">FamPay</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_coll_5"
+                        name="check_coll_5"
+                        type="checkbox"
+                        value="check_coll_5"
+                      />
+                      <label for="check_coll_5">Wells Fargo</label>
+                    </div>
+
+                    <div class="de_checkbox">
+                      <input
+                        id="check_coll_6"
+                        name="check_coll_6"
+                        type="checkbox"
+                        value="check_coll_6"
+                      />
+                      <label for="check_coll_6">ITC</label>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+
+              <div class="col-md-9">
+                <div class="row">
+                  <!-- nft item begin -->
+                  <%- include('../partials/exploreCollection', {data}); %>
+
+                  <div class="col-md-12 text-center">
+                    <a href="#" id="loadmore" class="btn-main wow fadeInUp lead"
+                      >Load more</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content close -->
+
+      <a href="#" id="back-to-top"></a>
+      <%- include('../partials/footer'); %>
+    </div>
+    <%- include('../partials/jsFiles'); %>
+  </body>
+</html>

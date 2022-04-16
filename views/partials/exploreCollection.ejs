@@ -1,0 +1,30 @@
+<% data.forEach(function(item) { %>
+<div class="d-item col-lg-4 col-md-6 col-sm-6 col-xs-12">
+  <div class="nft__item">
+    <div class="author_list_pp">
+      <a href="/profile?id=<%- item.postedBy %> ">
+        <img class="lazy" src="data:image/<%=item.authorImg.userImg.contentType%>;base64,<%=item.authorImg.userImg.data.toString('base64')%>" alt="" />
+        <i class="fa fa-check"></i>
+      </a>
+    </div>
+    <div class="nft__item_wrap">
+      <a href="/project?id=<%- item.id %>">
+        <img
+          src="data:image/<%=item.projectImg.contentType%>;base64,<%=item.projectImg.data.toString('base64')%>"
+          class="lazy nft__item_preview"
+          alt=""
+        />
+      </a>
+    </div>
+    <div class="nft__item_info">
+      <a href="/project?id=<%- item.id %>">
+        <h4><%- item.name %></h4>
+      </a>
+      <div class="nft__item_price"><%- item.techUsed %></div>
+      <div class="nft__item_action">
+        <a href="/project?id=<%- item.id %>">Learn more</a>
+      </div>
+    </div>
+  </div>
+</div>
+<% }); %>

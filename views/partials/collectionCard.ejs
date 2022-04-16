@@ -1,0 +1,19 @@
+<% data.forEach(function(item) { %>
+<div class="nft_coll">
+  <div class="nft_wrap">
+    <a href="collection.html"
+      ><img src="images/collections/<%= item.collectionImage %>" class="lazy img-fluid" alt=""
+    /></a>
+  </div>
+  <div class="nft_coll_pp">
+    <a href="collection.html"
+      ><img class="lazy" src="images/author/<%= item.authorImage %>" alt=""
+    /></a>
+    <i class="fa fa-check"></i>
+  </div>
+  <div class="nft_coll_info">
+    <a href="collection.html"><h4><%= item.name %></h4></a>
+    <span><%= item.code %></span>
+  </div>
+</div>
+<% }); %>

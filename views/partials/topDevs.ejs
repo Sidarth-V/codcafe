@@ -1,0 +1,18 @@
+<% data.forEach(function(item) { %>
+    <li>
+        <div class="author_list_pp">
+          <a href="/profile?id=<%= item._id %>">
+            <img
+              class="lazy"
+              src="data:image/<%=item.userImg.contentType%>;base64,<%=item.userImg.data.toString('base64')%>"
+              alt=""
+            />
+            <i class="fa fa-check"></i>
+          </a>
+        </div>
+        <div class="author_list_info">
+          <a href="/profile?id=<%= item._id %>"><%= item.name %></a>
+          <span>profile views: <%= item.viewCount %></span>
+        </div>
+      </li>
+    <% }); %>
