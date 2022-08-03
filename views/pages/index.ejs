@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+        
+      <%- include('../partials/header', {style: " transparent header-light scroll-light", status: status}); -%>
+      
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Mail added to list
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+        <section
+          id="section-hero"
+          aria-label="section"
+          class="no-top no-bottom vh-100"
+          data-bgimage="url(images/background/bg-shape-1.jpg) bottom"
+        >
+          <div class="v-center">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="spacer-single"></div>
+                  <h6 class="wow fadeInUp" data-wow-delay=".5s">
+                    <span class="text-uppercase id-color-2"
+                      >Working Code</span
+                    >
+                  </h6>
+                  <div class="spacer-10"></div>
+                  <h1 class="wow fadeInUp" data-wow-delay=".75s">
+                    Develop. Hire.
+                  </h1>
+                  <p class="wow fadeInUp lead" data-wow-delay="1s">
+                    Look for projects, or get someone to help with yours.
+                    <br><br>
+                    WorkingCode is a platform that provides access to real-world experience and allows developers to collaborate and showcase their projects. 
+
+                  </p>
+                  <div class="spacer-10"></div>
+                  <a
+                    href="explore.html"
+                    class="btn-main wow fadeInUp lead"
+                    data-wow-delay="1.25s"
+                    >Explore</a
+                  >
+                  <div class="mb-sm-30"></div>
+                </div>
+                <div class="col-md-6 xs-hide">
+                  <img
+                    src="images/misc/nft.png"
+                    class="lazy img-fluid wow fadeIn"
+                    data-wow-delay="1.25s"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="section-intro" class="no-top no-bottom">
+          <%- include('../partials/features.ejs', 
+            {
+                data: [
+                    { 
+                        heading: "set up your profile",
+                        description: "Connect with people with similar interests and find projects that you want to contribute to",
+                        imgClass: "icon_id-2_alt"
+                    },
+                    { 
+                        heading: "Collaborate with others",
+                        description: "Need people to help you with your project? Hire and collaborate with people who have the expertise.",
+                        imgClass: "icon_group"
+                    },
+                    { 
+                        heading: "Open Source",
+                        description: "WorkingCode is an open source project. Feel free to give us feedback and add features you would like to see!",
+                        imgClass: "icon_lightbulb_alt"
+                    }
+                ]
+            }
+        ); -%>
+        </section>
+
+        <section id="section-items" class="no-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center">
+                  <h2>Top projects</h2>
+                  <div class="small-border bg-color-2"></div>
+                </div>
+              </div>
+              <div id="items-carousel" class="owl-carousel wow fadeIn">
+                <!-- nft item begin -->
+                <%- include('../partials/topProjs', {data: projects}); -%>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="section-popular" class="pb-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center">
+                  <h2>Popular developers</h2>
+                  <div class="small-border bg-color-2"></div>
+                </div>
+              </div>
+              <div class="col-md-12 wow fadeIn">
+                <ol class="author_list">
+                    <%- include('../partials/topDevs', {data: users}); -%>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+      <!-- content close -->
+      <%- include('../partials/footer'); %>
+    </div>
+    <%- include('../partials/jsFiles'); %>
+  </body>
+</html>

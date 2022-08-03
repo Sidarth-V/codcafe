@@ -1,0 +1,24 @@
+<% users.forEach(function(user) { %>
+<div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+    <div class="nft__item">
+      <div class="nft__item_wrap">
+        <a href="/profile?id=<%- user._id %>">
+          <img
+            src="data:image/<%=user.userImg.contentType%>;base64,<%=user.userImg.data.toString('base64')%>"
+            class="lazy nft__item_preview"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="nft__item_info">
+        <a href="/profile?id=<%- user._id %>">
+          <h4><%- user.name %></h4>
+        </a>
+        <div class="nft__item_price"><%- user.skills %></div>
+        <div class="nft__item_action">
+          <a href="/profile?id=<%- user._id %>">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% }); %>
